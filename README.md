@@ -1,20 +1,19 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🖼️ Masaüstü Görsel Paneli (Kapadokya & Atatürk)
 
-# Run and deploy your AI Studio app
+Bu proje, Kapadokya'nın eşsiz Üç Güzeller manzarası ile Gazi Mustafa Kemal Atatürk'ün vakur silüetini birleştiren özel masaüstü tasarımlarını yönetmek, hazırlamak ve sergilemek için geliştirilen modern bir web arayüzüdür.
 
-This contains everything you need to run your app locally.
+## 🛠️ Teknik Altyapı
+Bu panel, en hızlı ve modern teknolojiler kullanılarak inşa edilmiştir:
+- **Paket Yöneticisi:** `Bun` (Hız tutkunları için!)
+- **Geliştirme Ortamı:** `Vite`
+- **Dil:** `TypeScript` & `HTML/CSS`
 
-View your app in AI Studio: https://ai.studio/apps/fbdb35cd-af89-4353-ada3-0db97dd1d1eb
+## 🚀 Başlangıç
+Projeyi kendi bilgisayarınızda çalıştırmak için terminale şu komutları girin:
 
-## Run Locally
+```bash
+# Bağımlılıkları yükle
+bun install
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# Geliştirme sunucusunu başlat
+bun dev

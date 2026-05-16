@@ -11,6 +11,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Download, Flag, Heart, MapPin, Wind } from "lucide-react";
 import { useState, useEffect } from "react";
+import Gallery from "./components/Gallery";
 
 export default function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -265,6 +266,9 @@ export default function App() {
           <p className="text-xs font-mono uppercase tracking-[0.4em] text-white/30">M. Kemal Atatürk</p>
         </motion.div>
       </section>
+
+      {/* Modern Gallery Section */}
+      <Gallery />
 
       {/* Grid Features */}
       <section className="pb-24 px-6 max-w-7xl mx-auto">

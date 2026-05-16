@@ -39,6 +39,23 @@ export default function App() {
     ataturkUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ataturk_silhouette.svg/1024px-Ataturk_silhouette.svg.png",
   };
 
+  const handleDownload = async () => {
+    try {
+      // Create a temporary link element
+      const link = document.createElement("a");
+      link.href = bgUrl;
+      link.download = "ay-yildiz-duvar-kagidi.jpg"; // Default filename
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("İndirme hatası:", error);
+      // Fallback to window.open if link approach fails
+      window.open(bgUrl, "_blank");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black font-sans selection:bg-red-600 selection:text-white">
       {/* Navigation */}
@@ -187,7 +204,7 @@ export default function App() {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open(bgUrl, '_blank')}
+                  onClick={handleDownload}
                   className="group flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)]"
                 >
                   <Download className="w-5 h-5 group-hover:animate-bounce" />

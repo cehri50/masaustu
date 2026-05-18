@@ -269,23 +269,48 @@ export default function App() {
       </section>
 
       {/* Quote Section */}
-      <section className="py-24 px-6 border-t border-white/5 flex flex-col items-center justify-center text-center">
+      <section className="py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-red-600/5 -skew-y-3 transform origin-right" />
+        
         <motion.div
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="max-w-3xl"
+           className="max-w-5xl mx-auto relative z-10"
         >
-          <p className="font-serif text-3xl md:text-4xl italic text-white/90 mb-8 leading-relaxed">
-            "Ne Mutlu Türküm Diyene!"
-          </p>
-          <div className="h-1 w-12 bg-red-600 mx-auto mb-4" />
-          <p className="text-xs font-mono uppercase tracking-[0.4em] text-white/30">M. Kemal Atatürk</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <span className="text-red-500 font-mono tracking-widest uppercase text-xs">Ebedi Liderimiz</span>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight">
+                "Ey yükselen yeni nesil! <br/> İstikbal sizindir."
+              </h2>
+              <p className="text-white/50 text-lg leading-relaxed">
+                Cumhuriyeti biz kurduk, onu yükseltecek ve yaşatacak olan sizlersiniz. Vatanın her karış toprağına, tarihinden aldığımız güçle sahip çıkıyoruz.
+              </p>
+              <div className="w-12 h-1 bg-red-600" />
+            </div>
+            
+            <div className="glass p-12 rounded-[32px] border-white/5 relative group">
+              <div className="absolute -top-6 -left-6 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-2xl font-serif">"</div>
+              <p className="text-xl md:text-2xl italic text-white/90 mb-8 leading-relaxed font-serif">
+                "Vatanını en çok seven, görevini en iyi yapandır."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full overflow-hidden bg-white/10">
+                   <img src={wallpaperData.ataturkUrl} alt="Atatürk" className="w-full h-full object-cover grayscale invert" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold">Mustafa Kemal ATATÜRK</p>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest">Türkiye Cumhuriyeti Kurucusu</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </section>
 
       {/* Modern Gallery Section */}
-      <Gallery />
+      <Gallery onSelectBackground={setBgUrl} />
 
       {/* Grid Features */}
       <section className="pb-24 px-6 max-w-7xl mx-auto">

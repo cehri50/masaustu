@@ -9,8 +9,12 @@ interface Photo {
   category: string;
 }
 
+interface GalleryProps {
+  onSelectBackground: (url: string) => void;
+}
+
 const photos: Photo[] = [
-  { id: 1, url: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=2600&auto=format&fit=crop", title: "Üç Güzeller - Kapadokya", category: "Doğa" },
+  { id: 1, url: "https://images.unsplash.com/photo-1620050861113-11b332304899?q=80&w=2600&auto=format&fit=crop", title: "Üç Güzeller Peri Bacaları", category: "Doğa" },
   { id: 2, url: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=2600&auto=format&fit=crop", title: "İstanbul'un Ruhu", category: "Şehir" },
   { id: 3, url: "https://images.unsplash.com/photo-1627393433364-15f10660a92f?q=80&w=2600&auto=format&fit=crop", title: "Vatan Destanı", category: "Vatan" },
   { id: 4, url: "https://images.unsplash.com/photo-1565108940217-063f41fc86ab?q=80&w=2000&auto=format&fit=crop", title: "Anıtkabir Saygı", category: "Vatan" },
@@ -18,7 +22,7 @@ const photos: Photo[] = [
   { id: 6, url: "https://images.unsplash.com/photo-1590424753062-ed0c09268886?q=80&w=2000&auto=format&fit=crop", title: "Toroslar'da Şafak", category: "Doğa" },
 ];
 
-export default function Gallery() {
+export default function Gallery({ onSelectBackground }: GalleryProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   return (
@@ -102,9 +106,24 @@ export default function Gallery() {
                 className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl pointer-events-auto"
                 referrerPolicy="no-referrer"
               />
-              <div className="mt-8 text-center pointer-events-auto">
-                <h3 className="text-3xl font-bold text-white mb-2">{selectedPhoto.title}</h3>
-                <p className="text-red-500 font-mono tracking-widest uppercase text-sm">{selectedPhoto.category}</p>
+              <div className="mt-8 text-center pointer-events-auto flex flex-col items-center gap-4">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-1">{selectedPhoto.title}</h3>
+                  <p className="text-red-500 font-mono tracking-widest uppercase text-sm">{selectedPhoto.category}</p>
+                </div>
+                
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectBackground(selectedPhoto.url);
+                    setSelectedPhoto(null);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-red-600 hover:text-white transition-all shadow-xl flex items-center gap-2"
+                >
+                  <Maximize2 className="w-4 h-4" />
+                  Ana Sayfa Arka Planı Yap
+                </button>
               </div>
             </motion.div>
           </motion.div>
